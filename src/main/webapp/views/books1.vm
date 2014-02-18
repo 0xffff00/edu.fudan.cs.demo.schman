@@ -1,0 +1,5 @@
+<ul>
+#foreach( $book in $books )
+    <li>$book</li>
+#end
+</ul>

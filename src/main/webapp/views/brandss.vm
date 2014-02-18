@@ -1,0 +1,5 @@
+<ul>
+#foreach( $brand in $brands )
+    <li>$brand.id</li>
+#end
+</ul>
