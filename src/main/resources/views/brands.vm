@@ -1,5 +1,0 @@
-<ul>
-#foreach( $brand in $brands )
-    <li>$brand.id <a href="$rc.contextPath/brands/$brand.id/shops">shops</a></li>
-#end
-</ul>
