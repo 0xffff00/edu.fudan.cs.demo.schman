@@ -1,4 +1,4 @@
-package edu.fudan.nisl.auth;
+package edu.fudan.cs.auth;
 
 import java.util.List;
 import java.util.Map;

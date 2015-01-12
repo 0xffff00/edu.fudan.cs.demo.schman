@@ -19,8 +19,8 @@ class UsersRolesService {
 	@Autowired
 	UsersRolesCacheDAO usersRolesDao
 
-	public User findUserById(long id){
-		usersRolesDao.findUserById(id)
+	public User findUserById(Long id){
+			usersRolesDao.findUserById(id)
 	}
 	
 	public User findUserByName(String username){
@@ -30,7 +30,9 @@ class UsersRolesService {
 	public List<User> findUsers(){
 		usersRolesDao.findUsers()
 	}
-	
+	public List<User> findUsersByRoleName(String roleName){
+		usersRolesDao.findUsersByRoleName(roleName)
+	}
 
 	public void updateUser(User example){
 		usersRolesDao.updateUser(example)
@@ -43,6 +45,9 @@ class UsersRolesService {
 	}
 	public Role findRoleById(long id){
 		usersRolesDao.findRoleById(id)
+	}
+	public Role findRoleByName(String name){
+		usersRolesDao.findRoleByName(name)
 	}
 	public List<Role> findRoles(){
 		usersRolesDao.findRoles()

@@ -389,8 +389,8 @@ jQuery.fn.extend({
 });
 
 /**
- * Simplified Chinese translation for bootstrap-datetimepicker Yuan Cheung
- * <advanimal@gmail.com>
+ * Simplified Chinese translation for bootstrap-datetimepicker
+ * @author Yuan Cheung <advanimal@gmail.com>
  */
 (function($){
 	if (!$.fn.datetimepicker) return;
@@ -405,59 +405,58 @@ jQuery.fn.extend({
 			meridiem: ["上午", "下午"]
 	};
 }(jQuery));
-
-
-//========================== jaq-dss 本项目相关 ===============================
-
-var DSS = {
-	dt : {},	//DataTables
-	bs : {}		//BootStrap
-};
-DSS.STATES = 'osbSAXD';
-DSS.MAP_STATE = {
-		'o' : '未填写',
-		's' : '已保存',
-		'b' : '被退回',
-		'S' : '已提交',
-		'A' : '已审核归档',
-		'X' : '已过期',
-		'D' : '已作废'
+/**
+ * select2 i18n 
+ * @see https://select2.github.io/
+ */
+if (window.$ && $.fn && $.fn.select2){
+window.$=window.$||{},function(){
+	$&&$.fn&&$.fn.select2&&$.fn.select2.amd&&(define=$.fn.select2.amd.define,require=$.fn.select2.amd.require),
+	define("select2/i18n/zh-CN",[],function(){return{
+	inputTooLong:function(e){var t=e.input.length-e.maximum,n="请删掉"+t+"个字符";return n},
+	inputTooShort:function(e){var t=e.minimum-e.input.length,n="请再输入"+t+"个字符";return n},
+	loadingMore:function(){return"加载中…"},
+	maximumSelected:function(e){var t="你只能选择最多"+e.maximum+"项";return t},
+	noResults:function(){return"没有找到相符的项目"},searching:function(){return"查找中…"}}}),
+	require("jquery.select2"),
+	$.fn.select2.amd={define:define,require:require}
+}();
+}
+/**
+ * Bootstrap-select v1.6.3 i18n
+ * @see http://silviomoreto.github.io/bootstrap-select/ 
+ */
+if (window.$ && $.fn && $.fn.selectpicker){
+(function ($) {
+  $.fn.selectpicker.defaults = {
+    noneSelectedText: '没有选中任何项',
+    noneResultsText: '没有找到匹配项',
+    countSelectedText: '选中{1}中的{0}项',
+    maxOptionsText: ['超出限制 (最多选择{n}项)', '组选择超出限制(最多选择{n}组)'],
+    multipleSeparator: ', '
+  };
+}(jQuery));
+}
+if (window.bootbox){
+	bootbox.setDefaults({locale:"zh_CN"});
+}
+if (window.Messenger){
+	Messenger.options = {
+	    extraClasses: 'messenger-fixed messenger-on-bottom messenger-on-right',
+	    theme: 'flat'
 	}
-DSS.bs.MAP_state2LabelCss = { // reporttask state -> bootstrap css class
-	'o' : "label rt-state-o", // grey
-	's' : "label label-primary", // blue
-	'b' : "label label-danger", // red
-	'S' : "label label-warning", // yellow
-	'A' : "label label-success", // green
-	'X' : "label rt-state-X", // dark brown
-	'D' : "label rt-state-D" // dark purpe
-};
-DSS.bs.MAP_state2ProgbarCss = { // reporttask state -> bootstrap css class
-	'o' : "progress-bar rt-state-o", // grey
-	's' : "progress-bar ", // blue
-	'b' : "progress-bar progress-bar-danger", // red
-	'S' : "progress-bar progress-bar-warning", // yellow
-	'A' : "progress-bar progress-bar-success", // green
-	'X' : "progress-bar rt-state-X", // dark brown
-	'D' : "progress-bar rt-state-D" // dark purpe
-
 }
-DSS.bs.getLabelCssClassByRTState = function(state) {
-	return cssClass = DSS.bs.MAP_state2LabelCss[state] || DSS.bs.MAP_state2LabelCss['other'];
+//========================== 本项目相关 ===============================
+function generate_html_tr(cells){
+	var s='';
+	for (var i=0;i<cells.length;i++){
+		s+= ('<td>'+cells[i]+'</td>');
+	}
+	return '<tr>'+s+'</tr>';
 }
-DSS.bs.getProgbarCssClassByRTState = function(state) {
-	return cssClass = DSS.bs.MAP_state2ProgbarCss[state] || DSS.bs.MAP_state2ProgbarCss['other'];
+function getRowDataById(rows_data,row_id){
+	for (var i in rows_data){
+		if (rows_data[i].id==row_id) return rows_data[i];
+	}
+	return null;
 }
-
-DSS.dt.RTStateRender = function(cell) {
-	var cssClass = DSS.bs.getLabelCssClassByRTState(cell);
-	return '<span class="' + cssClass + '">' + DSS.MAP_STATE[cell] + '</span>';
-}
-DSS.dt.RTStateRenders = {
-	X : function(cell){return DSS.dt.RTStateRender('X');}
-}
-DSS.dt.DateRenders = {
-	DT : function (cell) {return DateUtils.format(cell,DateUtils.ISO8601_DATETIME);},
-	D : function (cell) {return DateUtils.format(cell,DateUtils.ISO8601_DATE);}
-}  
-DSS.dt.DateRender = DSS.dt.DateRenders.DT

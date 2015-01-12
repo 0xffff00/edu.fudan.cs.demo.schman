@@ -1,4 +1,36 @@
+body {
+	font-family: "Microsoft YaHei";
+	
+}
+.schapp-banner{
+	margin:0 5%;
+}
+.schapp-body{ 
+	margin: 0 5%;
+}
 
+
+#tipbox0 {
+	display:none;position: fixed;
+	top: 10px;height:30px;min-width:200px;float: left;
+	margin:0 40%;
+}
+#tipbox-wrapper{
+	float: left;position: fixed;
+	top:0;text-align:center;height: 10px;margin-left:auto; margin-right:auto; width:100%;
+}
+#tipbox {
+	display:none; /* position: fixed;float: left;*/
+	background-color:#009900;color:white;font:bold 18pt;padding:5px;text-align:center;
+	border-bottom-left-radius: 5px;border-bottom-right-radius: 5px;
+	top:0;height:30px;width: 180px;
+	margin:0 auto;
+}
+.modal-header-sch {
+	color:black;
+    background-color: white;
+ }
+ 
 .dss-navi-breadcrumb {
 	position: relative;
 	top:10px;
@@ -6,19 +38,7 @@
 	background-color: #f2f2f2;
 	overflow: hidden;
 }
-.dss-navi-breadcrumb .breadcrumb {
-	float: left;
-	height: 22px;
-	line-height: 22px;
-	padding-top: 3px;
-	padding-left: 25px;
-	font-size: 13px;
-	color: #174b7c;
-	background-image: url('image/mapBg.jpg');
-	background-repeat: no-repeat;
-	background-position: left top;
-	overflow: hidden;
-} 
+
 .dss-content {}
 .dss-content table.dsst {width:100%;}
 

@@ -1,4 +1,4 @@
-package edu.fudan.nisl.auth;
+package edu.fudan.cs.auth;
 /**
  * Authentication Exception
  * @author Huang Zhenkun (14210240077@fudan.edu.cn)
