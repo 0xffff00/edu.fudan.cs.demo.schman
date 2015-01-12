@@ -6,7 +6,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <meta name="author" content="School of Computer Science, Fudan University" />
 
-<title>课程管理</title>
+<title>课程成绩评定</title>
 <link rel="stylesheet" href="${pageContext.request.contextPath}/css/modal.css">
 <link rel="stylesheet" href="${pageContext.request.contextPath}/css/bootstrap.css">
 <link rel="stylesheet" href="${pageContext.request.contextPath}/css/bootstrap-select.css">
@@ -35,7 +35,7 @@
 <script type="text/javascript">
 var rows_data,row;
 $(document).ready(function() {
-	$("#banner-nav li.student_select_courses").addClass('active');
+	$("#banner-nav li.teacher_grade").addClass('active');
 		
 	tryloadData();
 });
@@ -43,7 +43,7 @@ function tryloadData(){
 	
 	$.ajax({
  		type:'POST',
- 		url:'${pageContext.request.contextPath}/courses/courses/unreserved.json',
+ 		url:'${pageContext.request.contextPath}/courses/courses/taught.json',
  		data:{},
  		success: function(data){
  			if (data.error){
@@ -54,102 +54,26 @@ function tryloadData(){
  			
  		}
  	});
-	$.ajax({
- 		type:'POST',
- 		url:'${pageContext.request.contextPath}/courses/courses/reserved.json',
- 		data:{},
- 		success: function(data){
- 			if (data.error){
- 				bootbox.alert(data.error);
- 				return;
- 			} 
- 			renderCoursesTable2(data);
- 			
- 		}
- 	});
+	
 }
 function renderCoursesTable(data){
 	$('#courses_table>tbody>tr').remove();
 	rows_data=data.data;		 
 	var opts= 
-		" <button class='sele btn btn-success btn-sm'><i class='glyphicon glyphicon-circle-arrow-right'></i> 选课</button>"
+		" <a href='#' class='grad btn btn-default btn-sm'><i class='glyphicon glyphicon-edit'></i> 录入成绩</a>"
 
 	$.each(rows_data,function(i,row){
 		var tea_name=(row.teacher)?row.teacher.username:'';
-		var arr=[row.id,row.name,row.location,row.credit,tea_name,row.numStudents,opts]		
+		var opts= " <a href='${pageContext.request.contextPath}/teacher/grade/course/"+ row.id
+		+"' class='grad btn btn-default btn-sm'><i class='glyphicon glyphicon-edit'></i> 录入成绩</a>"
+		var arr=[row.id,row.name,row.location,row.credit,tea_name,row.numStudents,opts]	
+		
 		$('#courses_table').append(generate_html_tr(arr));
-		$('#courses_table button.sele:last').click(function(){
-			showReserveCourseConfirmDialog(row.id);
-		});		
-	});   	
- 
-}
-function renderCoursesTable2(data){
-	$('#courses_table2>tbody>tr').remove();
-	rows_data=data.data;		 
-	var opts= 
-		" <button class='unsele btn btn-danger btn-sm'><i class='glyphicon glyphicon-remove'></i> 退选</button>"
-
-	$.each(rows_data,function(i,row){
-		var tea_name=(row.teacher)?row.teacher.username:'';
-		var arr=[row.id,row.name,row.location,row.credit,tea_name,row.numStudents,opts]		
-		$('#courses_table2').append(generate_html_tr(arr));
-		$('#courses_table2 button.unsele:last').click(function(){
-			showDropCourseConfirmDialog(row.id);
-		});		
+			
 	});   	
  
 }
 
-function showReserveCourseConfirmDialog(item_id) {	
-	bootbox.confirm("确定要选择该课程吗?", function(result) {
-		if (result) {
-			tryReserveCourse(item_id);
-		}
-	});
-}
-function showDropCourseConfirmDialog(item_id) {	
-	bootbox.confirm("确定要退选该课程吗?", function(result) {
-		if (result) {
-			tryDropCourse(item_id);
-		}
-	});
-}
-
-function tryReserveCourse(courseId) {
-	$.ajax({
-		type : 'POST',
-		dataType : 'json',
-		url : "${pageContext.request.contextPath}/courses/course/reserve.do",
-		data : {"courseId" : courseId},
-		success : function(data) {
-			if (!data.error) {
-				tryloadData();
-				Messenger().post("选课成功!");				
-			} else {
-				bootbox.alert("操作失败: " + data.error);
-			}			
-		}
-		,error : function(xhr,st,err){alert("AJAX ERROR: "+st+err); }
-	});
-}
-function tryDropCourse(courseId) {
-	$.ajax({
-		type : 'POST',
-		dataType : 'json',
-		url : "${pageContext.request.contextPath}/courses/course/drop.do",
-		data : {"courseId" : courseId},
-		success : function(data) {
-			if (!data.error) {
-				tryloadData();
-				Messenger().post("退选成功!");				
-			} else {
-				bootbox.alert("操作失败: " + data.error);
-			}			
-		}
-		,error : function(xhr,st,err){alert("AJAX ERROR: "+st+err); }
-	});
-}
 </script>
 </head>
 <body>
@@ -159,13 +83,13 @@ function tryDropCourse(courseId) {
 		<div class="schapp-navi-breadcrumb">
 			<ol class="breadcrumb">
 				<li><a href="${pageContext.request.contextPath}/home">首页</a></li>					
-				<li class="active">课程管理</li>
+				<li class="active">课程教学任务</li>
 			</ol>
 		</div>
 
-		<div class="panel panel-success">
+		<div class="panel panel-danger">
 			<div class="panel-heading">
-				<h3 class="panel-title">可选课程</h3>				
+				<h3 class="panel-title">课程教学任务</h3>				
 			</div>			
 			<div class="panel-body">
 				
@@ -187,30 +111,7 @@ function tryDropCourse(courseId) {
 
 			</div>
 		</div>
-		<div class="panel panel-warning">
-			<div class="panel-heading">
-				<h3 class="panel-title">已选课程</h3>				
-			</div>			
-			<div class="panel-body">
-				
-				<table class="table table-condensed" id="courses_table2">
-					<thead>
-						<tr>
-							<th>选择</th>
-							<th>课程名称</th>
-							<th>上课地点</th>
-							<th>学分</th>
-							<th>任课教师</th>
-							<th>已选人数</th>
-							<th>操作</th>
-						</tr>
-					</thead>
-					 
-				</table>
-
-
-			</div>
-		</div>
+		
 	</div>
 
 </body>

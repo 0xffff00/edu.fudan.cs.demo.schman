@@ -26,7 +26,11 @@ class UsersRolesService {
 	public User findUserByName(String username){
 		usersRolesDao.findUserByName(username)
 	}	
-	
+	public User findUserByNameOrCode(String usernameOrCode){
+		User u=usersRolesDao.findUserByName(usernameOrCode)
+		if (!u) u=usersRolesDao.findUserByCode(usernameOrCode)
+		u
+	}
 	public List<User> findUsers(){
 		usersRolesDao.findUsers()
 	}

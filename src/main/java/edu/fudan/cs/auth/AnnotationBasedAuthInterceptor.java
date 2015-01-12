@@ -14,6 +14,9 @@ import org.springframework.web.method.HandlerMethod;
 import org.springframework.web.servlet.HandlerInterceptor;
 import org.springframework.web.servlet.ModelAndView;
 
+import edu.fudan.cs.schapp.model.User;
+import edu.fudan.cs.schapp.model.UserAdaptee;
+
 /**
  * 基于注解方式的用户登录认证模块拦截器 本拦截器用于拦截被@RequireUserLogin,@RequirePermission,@RequireRole等注解的method
  * 
@@ -29,6 +32,7 @@ public class AnnotationBasedAuthInterceptor implements HandlerInterceptor {
 	public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
 		RequireUserLogin annoRequireUserLogin = null;
 		RequirePermission annoRequirePermission = null;
+		RequireRole annoRequireRole = null;
 		HttpSession session = request.getSession();
 		try {
 			annoRequireUserLogin = this.findAnno(handler, RequireUserLogin.class);
@@ -37,7 +41,7 @@ public class AnnotationBasedAuthInterceptor implements HandlerInterceptor {
 		}
 		if (annoRequireUserLogin != null) {
 			if (session.getAttribute("user") == null) {
-				response.sendRedirect(request.getContextPath() + "/home?goto=" + request.getRequestURI());
+				response.sendRedirect(request.getContextPath() + "/login?goto=" + request.getRequestURI());
 				return false;
 			}
 		}
@@ -49,21 +53,30 @@ public class AnnotationBasedAuthInterceptor implements HandlerInterceptor {
 		}
 		if (annoRequirePermission != null) {
 			if (session.getAttribute("user") == null) {
-				response.sendRedirect(request.getContextPath() + "/home?goto=" + request.getRequestURI());
+				response.sendRedirect(request.getContextPath() + "/login?goto=" + request.getRequestURI());
 				return false;
 			}
-			Map<?, ?> user = (Map<?, ?>) session.getAttribute("user");
-			String permissions = MapUtils.getString(user, "permissions");
-			if (permissions == null) {
-				return false;
-			} else {
-				String permissionNeed = annoRequirePermission.value();
-				if (!permissions.contains(permissionNeed))
-					return false;
-			}
-			
+			// TODO no need yet
+
 		}
-		// TODO parse @RequireRole
+		// check @RequireRole
+		try {
+			annoRequireRole = this.findAnno(handler, RequireRole.class);
+		} catch (Exception e) {
+			log.error(e);
+		}
+		if (annoRequireRole != null) {
+			if (session.getAttribute("user") == null) {
+				response.sendRedirect(request.getContextPath() + "/login?goto=" + request.getRequestURI());
+				return false;
+			}
+			String roleNeed=annoRequireRole.value();
+			UserAdaptee user=(UserAdaptee) session.getAttribute("user");
+			String role=user.getMainRoleName();
+			if (!roleNeed.equals(role)){
+				return false;
+			}			
+		}
 		return true;
 
 	}

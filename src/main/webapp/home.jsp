@@ -7,7 +7,6 @@
 
 <link rel="stylesheet" href="${pageContext.request.contextPath}/css/modal.css">
 <link rel="stylesheet" href="${pageContext.request.contextPath}/css/bootstrap.css">
-<link rel="stylesheet" href="${pageContext.request.contextPath}/css/bootstrap-dialog.css">
 
 <link rel="stylesheet" href="${pageContext.request.contextPath}/css/schapp-main.css" type="text/css" />
 <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
@@ -17,8 +16,8 @@
 <![endif]-->
 <script src="${pageContext.request.contextPath}/js/jquery-1.11.1.min.js"></script>
 <script src="${pageContext.request.contextPath}/js/bootstrap.min.js"></script>
-<script src="${pageContext.request.contextPath}/js/bootstrap-dialog.min.js"></script>
 
+<script src="${pageContext.request.contextPath}/js/bootbox.min.js"></script>
 
 <script src="${pageContext.request.contextPath}/js/common.js"></script>
 <style type="text/css">

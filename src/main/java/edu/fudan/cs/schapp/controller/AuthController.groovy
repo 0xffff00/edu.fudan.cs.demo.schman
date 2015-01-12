@@ -51,7 +51,7 @@ class AuthController {
 
 	@RequestMapping("/login.do")
 	public @ResponseBody Object login(String username, String password, HttpServletRequest request) {
-		User user=usersRolesService.findUserByName(username)
+		User user=usersRolesService.findUserByNameOrCode(username)
 		if (!user || password != user.password){
 			return ["error":"用户名或密码不正确！"]
 		}

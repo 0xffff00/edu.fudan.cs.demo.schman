@@ -22,6 +22,9 @@ class UsersRolesCacheDAO {
 	public User findUserByName(String name){
 		cdp.users.find {it.username==name}
 	}
+	public User findUserByCode(String code){
+		cdp.users.find {it.code==code}
+	}
 	public void createUser(User example){
 		example.id=cdp.seq_users++
 		cdp.users.add(example)

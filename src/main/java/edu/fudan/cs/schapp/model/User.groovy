@@ -1,6 +1,6 @@
 package edu.fudan.cs.schapp.model
 
-class User {
+class User implements UserAdaptee{
 
 	Long id
 	String code
@@ -13,9 +13,10 @@ class User {
 	public String toString() {
 		code+'@'+username
 	}
+	@Override
+	public String getMainRoleName() {
+		main_role?.name
+	}
 	
-	
-}
-class Student extends User{
 	
 }

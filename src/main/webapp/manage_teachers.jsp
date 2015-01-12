@@ -18,7 +18,6 @@
     <script src="${pageContext.request.contextPath}/js/respond.min.js"></script>
 <![endif]-->
 <script src="${pageContext.request.contextPath}/js/jquery-1.11.1.min.js"></script>
-<script src="${pageContext.request.contextPath}/js/jquery-ui.min.js"></script>
 <script src="${pageContext.request.contextPath}/js/bootstrap.min.js"></script>
 <script src="${pageContext.request.contextPath}/js/bootbox.min.js"></script>
 <script src="${pageContext.request.contextPath}/js/messenger.js"></script>

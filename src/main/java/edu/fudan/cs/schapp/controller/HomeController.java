@@ -47,4 +47,12 @@ public class HomeController {
 	public String student_select_courses() {		
 		return "student_select_courses";
 	}
+	@RequestMapping("/teacher/grade")
+	public String teacher_grade() {		
+		return "teacher_grade";
+	}
+	@RequestMapping("/teacher/grade/course/{courseId}")
+	public String teacher_grade_single() {		
+		return "teacher_grade_single";
+	}
 }

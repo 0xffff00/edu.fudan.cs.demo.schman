@@ -1,32 +1,3 @@
-//======================= Common Constants ===========================
-/**
- * DT_LANG is used to i18n(zh_CN) by dataTables ,which is equivalent to importing file '/js/jquery.dataTables.i18n.zh-CN.lang'
- */
-var DT_LANG = {
-	    "sProcessing":   "处理中...",
-	    "sLengthMenu":   "显示 _MENU_ 项结果",
-	    "sZeroRecords":  "没有匹配结果",
-	    "sInfo":         "显示第 _START_ 至 _END_ 项结果，共 _TOTAL_ 项",
-	    "sInfoEmpty":    "显示第 0 至 0 项结果，共 0 项",
-	    "sInfoFiltered": "(由 _MAX_ 项结果过滤)",
-	    "sInfoPostFix":  "",
-	    "sSearch":       "搜索:",
-	    "sUrl":          "",
-	    "sEmptyTable":     "表中数据为空",
-	    "sLoadingRecords": "载入中...",
-	    "sInfoThousands":  ",",
-	    "oPaginate": {
-	        "sFirst":    "首页",
-	        "sPrevious": "上页",
-	        "sNext":     "下页",
-	        "sLast":     "末页"
-	    },
-	    "oAria": {
-	        "sSortAscending":  ": 以升序排列此列",
-	        "sSortDescending": ": 以降序排列此列"
-	    }
-};
-
 //======================= Javascript Utilities ===============================
 /**
  * 获得当前url中的参数值
@@ -455,8 +426,10 @@ function generate_html_tr(cells){
 	return '<tr>'+s+'</tr>';
 }
 function getRowDataById(rows_data,row_id){
-	for (var i in rows_data){
-		if (rows_data[i].id==row_id) return rows_data[i];
+	if (rows_data){ 
+		for (var i=0;i<rows_data.length;i++){
+			if (rows_data[i].id==row_id) return rows_data[i];
+		}
 	}
 	return null;
 }

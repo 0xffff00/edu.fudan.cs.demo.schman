@@ -3,6 +3,7 @@ package edu.fudan.cs.schapp.util
 import org.springframework.stereotype.Repository;
 
 import edu.fudan.cs.schapp.model.Course
+import edu.fudan.cs.schapp.model.CourseSelection
 import edu.fudan.cs.schapp.model.Role
 import edu.fudan.cs.schapp.model.User
 
@@ -11,9 +12,10 @@ class CachedDataProvider {
 	List<Role> roles
 	List<User> users
 	List<Course> courses
-	int seq_roles=40,seq_users=2000,seq_courses=400
+	List<CourseSelection> courseSelections
+	int seq_roles=40,seq_users=2000,seq_courses=400,seq_courseSelections=112
 	public CachedDataProvider() {
-
+		def psd='356a192b7913b04c54574d18c28d46e6395428ab'
 		def admin=new Role(id:1,name:'admin')
 		def teacher=new Role(id:2,name:'teacher')
 		def student=new Role(id:3,name:'student')
@@ -22,54 +24,54 @@ class CachedDataProvider {
 		]
 
 		users=[
-			new User(id:30,code:'8888',username:'admin',password:'1',main_role:admin),
-			new User(id:101,code:'500101',username:'Dr Wang',password:'1',main_role:teacher),
-			new User(id:102,code:'500102',username:'Dr Ellison',password:'1',main_role:teacher),
-			new User(id:103,code:'500103',username:'Assist Prof Zhou',password:'1',main_role:teacher),
-			new User(id:104,code:'500104',username:'Prof Zhou',password:'1',main_role:teacher),
-			new User(id:105,code:'500105',username:'Dr Ritchie',password:'1',main_role:teacher),
-			new User(id:106,code:'500106',username:'Dr Stroustrup',password:'1',main_role:teacher),
-			new User(id:107,code:'500107',username:'Dr Zhen',password:'1',main_role:teacher),
-			new User(id:108,code:'500108',username:'Михайлович ',password:'1',main_role:teacher),
-			new User(id:109,code:'500109',username:'Prof Wu',password:'1',main_role:teacher),
-			new User(id:110,code:'500110',username:'Prof Brin',password:'1',main_role:teacher),
-			new User(id:111,code:'500111',username:'Prof Schmidt',password:'1',main_role:teacher),
-			new User(id:112,code:'500112',username:'Prof Sun',password:'1',main_role:teacher),
-			new User(id:113,code:'500113',username:'Prof Li',password:'1',main_role:teacher),
-			new User(id:114,code:'500114',username:'Michio Kaku',password:'1',main_role:teacher),
-			new User(id:115,code:'500115',username:'Dr Green',password:'1',main_role:teacher),
-			new User(id:116,code:'500116',username:'Dr Jobs',password:'1',main_role:teacher),
-			new User(id:117,code:'500117',username:'Dr Bar',password:'1',main_role:teacher),
-			new User(id:118,code:'500118',username:'Dr Foo',password:'1',main_role:teacher),
-			new User(id:1001,code:'14210241001',username:'student001',password:'1',main_role:student,major:'计算机技术'),
-			new User(id:1002,code:'14210241002',username:'student002',password:'1',main_role:student,major:'计算机技术'),
-			new User(id:1003,code:'14210241003',username:'student003',password:'1',main_role:student,major:'计算机技术'),
-			new User(id:1004,code:'14210241004',username:'student004',password:'1',main_role:student,major:'计算机技术'),
-			new User(id:1005,code:'14210241005',username:'student005',password:'1',main_role:student,major:'计算机技术'),
-			new User(id:1006,code:'14210241006',username:'student006',password:'1',main_role:student,major:'计算机技术'),
-			new User(id:1007,code:'14210241007',username:'student007',password:'1',main_role:student,major:'计算机技术'),
-			new User(id:1008,code:'14210241008',username:'student008',password:'1',main_role:student,major:'计算机技术'),
-			new User(id:1009,code:'14210241009',username:'student009',password:'1',main_role:student,major:'计算机技术'),
-			new User(id:1010,code:'14210241010',username:'student010',password:'1',main_role:student,major:'计算机技术'),
-			new User(id:1011,code:'14210241011',username:'student011',password:'1',main_role:student,major:'计算机技术'),
-			new User(id:1012,code:'14210241012',username:'student012',password:'1',main_role:student,major:'计算机技术'),
-			new User(id:1013,code:'14210241013',username:'student013',password:'1',main_role:student,major:'计算机技术'),
-			new User(id:1014,code:'14210241014',username:'student014',password:'1',main_role:student,major:'计算机技术'),
-			new User(id:1015,code:'14210241015',username:'student015',password:'1',main_role:student,major:'计算机技术'),
-			new User(id:1016,code:'14210241016',username:'student016',password:'1',main_role:student,major:'计算机技术'),
-			new User(id:1017,code:'14210241017',username:'student017',password:'1',main_role:student,major:'计算机技术'),
-			new User(id:1018,code:'14210241018',username:'ABC',password:'1',main_role:student,major:'计算机技术'),
-			new User(id:1019,code:'14210241019',username:'DEF',password:'1',main_role:student,major:'计算机技术'),
-			new User(id:1020,code:'14210241020',username:'GDD',password:'1',main_role:student,major:'计算机技术'),
-			new User(id:1021,code:'14210241021',username:'ESW',password:'1',main_role:student,major:'计算机技术'),
-			new User(id:1022,code:'14210241022',username:'TWQ',password:'1',main_role:student,major:'计算机技术'),
+			new User(id:30,code:'8888',username:'admin',password:psd,main_role:admin),
+			new User(id:101,code:'500101',username:'Dr Wang',password:psd,main_role:teacher),
+			new User(id:102,code:'500102',username:'Dr Ellison',password:psd,main_role:teacher),
+			new User(id:103,code:'500103',username:'Assist Prof Zhou',password:psd,main_role:teacher),
+			new User(id:104,code:'500104',username:'Prof Zhou',password:psd,main_role:teacher),
+			new User(id:105,code:'500105',username:'Dr Ritchie',password:psd,main_role:teacher),
+			new User(id:106,code:'500106',username:'Dr Stroustrup',password:psd,main_role:teacher),
+			new User(id:107,code:'500107',username:'Dr Zhen',password:psd,main_role:teacher),
+			new User(id:108,code:'500108',username:'Михайлович ',password:psd,main_role:teacher),
+			new User(id:109,code:'500109',username:'Prof Wu',password:psd,main_role:teacher),
+			new User(id:110,code:'500110',username:'Prof Brin',password:psd,main_role:teacher),
+			new User(id:111,code:'500111',username:'Prof Schmidt',password:psd,main_role:teacher),
+			new User(id:112,code:'500112',username:'Prof Sun',password:psd,main_role:teacher),
+			new User(id:113,code:'500113',username:'Prof Li',password:psd,main_role:teacher),
+			new User(id:114,code:'500114',username:'Michio Kaku',password:psd,main_role:teacher),
+			new User(id:115,code:'500115',username:'Dr Green',password:psd,main_role:teacher),
+			new User(id:116,code:'500116',username:'Dr Jobs',password:psd,main_role:teacher),
+			new User(id:117,code:'500117',username:'Dr Bar',password:psd,main_role:teacher),
+			new User(id:118,code:'500118',username:'Dr Foo',password:psd,main_role:teacher),
+			new User(id:1001,code:'14210241001',username:'student001',password:psd,main_role:student,major:'计算机技术'),
+			new User(id:1002,code:'14210241002',username:'student002',password:psd,main_role:student,major:'计算机技术'),
+			new User(id:1003,code:'14210241003',username:'student003',password:psd,main_role:student,major:'计算机技术'),
+			new User(id:1004,code:'14210241004',username:'student004',password:psd,main_role:student,major:'计算机技术'),
+			new User(id:1005,code:'14210241005',username:'student005',password:psd,main_role:student,major:'计算机技术'),
+			new User(id:1006,code:'14210241006',username:'student006',password:psd,main_role:student,major:'计算机技术'),
+			new User(id:1007,code:'14210241007',username:'student007',password:psd,main_role:student,major:'计算机技术'),
+			new User(id:1008,code:'14210241008',username:'student008',password:psd,main_role:student,major:'计算机技术'),
+			new User(id:1009,code:'14210241009',username:'student009',password:psd,main_role:student,major:'计算机技术'),
+			new User(id:1010,code:'14210241010',username:'student010',password:psd,main_role:student,major:'计算机技术'),
+			new User(id:1011,code:'14210241011',username:'student011',password:psd,main_role:student,major:'计算机技术'),
+			new User(id:1012,code:'14210241012',username:'student012',password:psd,main_role:student,major:'计算机技术'),
+			new User(id:1013,code:'14210241013',username:'student013',password:psd,main_role:student,major:'计算机技术'),
+			new User(id:1014,code:'14210241014',username:'student014',password:psd,main_role:student,major:'计算机技术'),
+			new User(id:1015,code:'14210241015',username:'student015',password:psd,main_role:student,major:'计算机技术'),
+			new User(id:1016,code:'14210241016',username:'student016',password:psd,main_role:student,major:'计算机技术'),
+			new User(id:1017,code:'14210241017',username:'student017',password:psd,main_role:student,major:'计算机技术'),
+			new User(id:1018,code:'14210241018',username:'ABC',password:psd,main_role:student,major:'计算机技术'),
+			new User(id:1019,code:'14210241019',username:'DEF',password:psd,main_role:student,major:'计算机技术'),
+			new User(id:1020,code:'14210241020',username:'GDD',password:psd,main_role:student,major:'计算机技术'),
+			new User(id:1021,code:'14210241021',username:'ESW',password:psd,main_role:student,major:'计算机技术'),
+			new User(id:1022,code:'14210241022',username:'TWQ',password:psd,main_role:student,major:'计算机技术'),
 		]
 		users.each {
 			it.department='计算机科学技术学院'			
 		}
 //		for (int i=1101;i<1140;i++){
 //			users.add(
-//				new User(id:i,code:'1421024'+i,username:'stu'+i,password:'1',main_role:student
+//				new User(id:i,code:'1421024'+i,username:'stu'+i,password:psd,main_role:student
 //					,department:'软件学院',major:'软件工程')
 //			)
 //		}
@@ -99,7 +101,18 @@ class CachedDataProvider {
 			new Course(id:23,location:'HB333',name:'无线网络',teacher: users[16]),
 			new Course(id:24,location:'G2211',name:'密码学与信息安全',teacher: users[18])
 		]
-		courses.each {it.credit=2}
+		courses.each {
+			it.credit=2
+			it.numStudents=0
+		}
+		courseSelections=[]
+		users.each {
+			if (it.id>1000 && it.id<1014){
+				courseSelections << new CourseSelection(id:seq_courseSelections++,course: courses[9],student: it)
+				courses[9].numStudents++
+			}
+		}
 		
 	}
+	
 }
