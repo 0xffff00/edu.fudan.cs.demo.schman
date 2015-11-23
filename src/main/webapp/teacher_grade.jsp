@@ -77,42 +77,41 @@ function renderCoursesTable(data){
 </script>
 </head>
 <body>
-
-	<%@ include file="div-banner.jsp"%>
-	<div class="schapp-body">
-		<div class="schapp-navi-breadcrumb">
-			<ol class="breadcrumb">
-				<li><a href="${pageContext.request.contextPath}/home">首页</a></li>					
-				<li class="active">课程教学任务</li>
-			</ol>
-		</div>
-
-		<div class="panel panel-danger">
-			<div class="panel-heading">
-				<h3 class="panel-title">课程教学任务</h3>				
-			</div>			
-			<div class="panel-body">
-				
-				<table class="table table-condensed" id="courses_table">
-					<thead>
-						<tr>
-							<th>选择</th>
-							<th>课程名称</th>
-							<th>上课地点</th>
-							<th>学分</th>
-							<th>任课教师</th>
-							<th>已选人数</th>
-							<th>操作</th>
-						</tr>
-					</thead>
-					 
-				</table>
-
-
-			</div>
-		</div>
-		
+<%@ include file="div-banner.jsp"%>
+<div class="schapp-body">
+	<div class="schapp-navi-breadcrumb">
+		<ol class="breadcrumb">
+			<li><a href="${pageContext.request.contextPath}/home">首页</a></li>					
+			<li class="active">课程教学任务列表</li>
+		</ol>
 	</div>
 
+	<div class="panel panel-danger">
+		<div class="panel-heading">
+			<h3 class="panel-title"><b>${sessionScope.user.username}</b> 的课程教学任务</h3>				
+		</div>			
+		<div class="panel-body">
+			
+			<table class="table table-condensed" id="courses_table">
+				<thead>
+					<tr>
+						<th>#</th>
+						<th>课程名称</th>
+						<th>上课地点</th>
+						<th>学分</th>
+						<th>任课教师</th>
+						<th>已选人数</th>
+						<th>操作</th>
+					</tr>
+				</thead>
+				 
+			</table>
+
+
+		</div>
+	</div>
+	
+</div>
+<%@ include file="div-footer.jsp"%>
 </body>
 </html>

@@ -119,12 +119,12 @@ function showDeleteItemConfirmDialog(item_id) {
 		}
 	});
 }
-function tryDeleteCourse(uid) {
+function tryDeleteCourse(courseId) {
 	$.ajax({
 		type : 'POST',
 		dataType : 'json',
 		url : "${pageContext.request.contextPath}/courses/course/delete.do",
-		data : {"userId" : uid},
+		data : {"courseId" : courseId},
 		success : function(data) {
 			if (!data.error) {
 				tryloadData();
@@ -244,6 +244,6 @@ function trySaveCourse() {
     </div><!-- /.modhal-content -->
   </div><!-- /.modal-dialog -->
  </div>
- <div id="aaa"></div>
+<%@ include file="div-footer.jsp"%>
 </body>
 </html>

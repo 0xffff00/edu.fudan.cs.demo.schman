@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-reverse-engineering PUBLIC "-//Hibernate/Hibernate Reverse Engineering DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-reverse-engineering-3.0.dtd" >
+
+<hibernate-reverse-engineering>
+  <table-filter match-name="classify"/>
+  <table-filter match-name="general_indicator"/>
+  <table-filter match-name="genindi_to_report"/>
+  <table-filter match-name="indicator_to_class"/>
+  <table-filter match-name="modification_log"/>
+  <table-filter match-name="relaindi_to_report"/>
+  <table-filter match-name="relative_indicator"/>
+  <table-filter match-name="report"/>
+  <table-filter match-name="report_data"/>
+  <table-filter match-name="role"/>
+  <table-filter match-name="system_log"/>
+  <table-filter match-name="user"/>
+  <table-filter match-name="user_to_report"/>
+</hibernate-reverse-engineering>

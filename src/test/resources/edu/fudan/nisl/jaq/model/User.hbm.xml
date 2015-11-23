@@ -1,0 +1,45 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 2014-11-3 14:45:56 by Hibernate Tools 3.4.0.CR1 -->
+<hibernate-mapping>
+    <class name="edu.fudan.nisl.jaq.model.User" table="users">
+        <id name="id" type="long">
+            <column name="id" precision="10" scale="0" />
+            <generator class="assigned" />
+        </id>
+        <property name="usersName" type="string">
+            <column name="users_name" length="80" not-null="true">
+                <comment>&#211;&#195;&#187;&#167;&#195;&#251;</comment>
+            </column>
+        </property>
+        <property name="usersPassword" type="string">
+            <column name="users_password" length="200">
+                <comment>&#211;&#195;&#187;&#167;&#195;&#220;&#194;&#235;</comment>
+            </column>
+        </property>
+        <property name="usersPhone" type="string">
+            <column name="users_phone" length="60">
+                <comment>&#202;&#214;&#187;&#250;&#186;&#197;</comment>
+            </column>
+        </property>
+        <property name="usersEmail" type="string">
+            <column name="users_email" length="400">
+                <comment>email&#181;&#216;&#214;&#183;</comment>
+            </column>
+        </property>
+        <property name="usersRoleId" type="java.lang.Long">
+            <column name="users_role_id" precision="10" scale="0">
+                <comment>&#189;&#199;&#201;&#171;&#192;&#224;&#208;&#205;</comment>
+            </column>
+        </property>
+        <property name="usersInfo" type="string">
+            <column name="users_info" length="1020">
+                <comment>&#198;&#228;&#203;&#251;&#208;&#197;&#207;&#162;</comment>
+            </column>
+        </property>
+        <property name="organ" type="string">
+            <column name="users_org" length="888"></column>
+        </property>
+    </class>
+</hibernate-mapping>

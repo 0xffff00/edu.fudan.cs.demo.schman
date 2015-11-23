@@ -51,7 +51,7 @@ class CoursesController {
 		User teacher=teacher_id?usersRolesService.findUserById(teacher_id):null
 		if (!credit) credit=0
 		Course example=new Course(code:code,name:name,location:location,teacher:teacher,credit:credit)
-
+		example.numStudents=0
 		if (!name)
 			return ["error":"name missing"]
 		coursesService.createCourse(example)
@@ -60,8 +60,8 @@ class CoursesController {
 
 
 	@RequestMapping("/course/delete.do")
-	public @ResponseBody Object course_delete(Long id){
-		coursesService.deleteCourse(id)
+	public @ResponseBody Object course_delete(Long courseId){
+		coursesService.deleteCourse(courseId)
 		["action":"success"]
 	}
 
@@ -118,10 +118,21 @@ class CoursesController {
 			"data":courses
 		]
 	}
+	@RequestMapping("/courseSelections/learnt.json")
+	public @ResponseBody Object courseSelections_learnt(HttpSession session){
+		User student=session.getAttribute("user")		
+		def rows=coursesService.findCourseSelectionsByStudent(student.id)		
+		[
+			"action":"success",
+			"recordsTotal":rows.size(),
+			"data":rows			
+		]
+	}
+	
 	@RequestMapping("/courseSelections/query.json")
 	public @ResponseBody Object courseSelections_query(Long courseId,Long studentId){
 		def rows=[]
-		Course course=null;
+		Course course=null
 		if (courseId){
 			course=coursesService.findCourseById(courseId)
 			rows=coursesService.findCourseSelectionsByCourse(courseId)

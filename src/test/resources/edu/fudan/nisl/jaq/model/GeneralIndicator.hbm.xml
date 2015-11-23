@@ -1,0 +1,63 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 2014-11-3 14:45:56 by Hibernate Tools 3.4.0.CR1 -->
+<hibernate-mapping>
+    <class name="edu.fudan.nisl.jaq.model.GeneralIndicator" table="general_indicator">
+        <id name="id" type="long">
+            <column name="id" precision="10" scale="0" />
+            <generator class="assigned" />
+        </id>
+        <property name="genindiName" type="string">
+            <column name="genindi_name" length="200" not-null="true">
+                <comment>&#214;&#184;&#177;&#234;&#195;&#251;&#179;&#198;</comment>
+            </column>
+        </property>
+        <property name="genindiAlias" type="string">
+            <column name="genindi_alias" length="200">
+                <comment>&#214;&#184;&#177;&#234;&#177;&#240;&#195;&#251;</comment>
+            </column>
+        </property>
+        <property name="genindiParentid" type="java.lang.Long">
+            <column name="genindi_parentid" precision="10" scale="0">
+                <comment>&#184;&#184;&#192;&#224;id</comment>
+            </column>
+        </property>
+        <property name="genindiAttribute" type="string">
+            <column name="genindi_attribute" length="200">
+                <comment>
+                &#183;&#214;&#192;&#224;&#202;&#244;&#208;&#212;&#163;&#186;&#202;&#177;&#198;&#218;&#214;&#184;&#177;&#234;&#161;&#162;&#202;&#177;&#181;&#227;&#214;&#184;&#177;&#234;&#161;&#162;&#207;&#224;&#182;&#212;&#214;&#184;&#177;&#234;&#161;&#162;&#198;&#189;&#190;&#249;&#214;&#184;&#177;&#234;&#181;&#200;</comment>
+            </column>
+        </property>
+        <property name="genindiUnit" type="string">
+            <column name="genindi_unit" length="80">
+                <comment>&#188;&#198;&#193;&#191;&#181;&#165;&#206;&#187;</comment>
+            </column>
+        </property>
+        <property name="genindiCreatetime" type="java.lang.Long">
+            <column name="genindi_createtime" precision="11" scale="0">
+                <comment>&#180;&#180;&#189;&#168;&#202;&#177;&#188;&#228;</comment>
+            </column>
+        </property>
+        <property name="genindiUserid" type="java.lang.Long">
+            <column name="genindi_userid" precision="10" scale="0">
+                <comment>&#180;&#180;&#189;&#168;&#211;&#195;&#187;&#167;id</comment>
+            </column>
+        </property>
+        <property name="genindiInfo" type="string">
+            <column name="genindi_info" length="1020">
+                <comment>&#198;&#228;&#203;&#251;&#208;&#197;&#207;&#162;</comment>
+            </column>
+        </property>
+        <property name="genindiModitime" type="java.lang.Long">
+            <column name="genindi_moditime" precision="11" scale="0" />
+        </property>
+        <property name="genindiLevel" type="java.lang.Long">
+            <column name="genindi_level" precision="2" scale="0" />
+        </property>
+        <property name="genindiIdentation" type="java.lang.Long">
+            <column name="genindi_identation" precision="2" scale="0" />
+        </property>
+       
+    </class>
+</hibernate-mapping>

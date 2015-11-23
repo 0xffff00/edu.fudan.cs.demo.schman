@@ -27,7 +27,7 @@ class CachedDataProvider {
 			new User(id:30,code:'8888',username:'admin',password:psd,main_role:admin),
 			new User(id:101,code:'500101',username:'Dr Wang',password:psd,main_role:teacher),
 			new User(id:102,code:'500102',username:'Dr Ellison',password:psd,main_role:teacher),
-			new User(id:103,code:'500103',username:'Assist Prof Zhou',password:psd,main_role:teacher),
+			new User(id:103,code:'500103',username:'Mrs. Mallard',password:psd,main_role:teacher),
 			new User(id:104,code:'500104',username:'Prof Zhou',password:psd,main_role:teacher),
 			new User(id:105,code:'500105',username:'Dr Ritchie',password:psd,main_role:teacher),
 			new User(id:106,code:'500106',username:'Dr Stroustrup',password:psd,main_role:teacher),

@@ -76,7 +76,7 @@ function renderCoursesTable(data){
 
 	$.each(rows_data,function(i,row){
 		var tea_name=(row.teacher)?row.teacher.username:'';
-		var arr=[row.id,row.name,row.location,row.credit,tea_name,row.numStudents,opts]		
+		var arr=[row.name,row.location,row.credit,tea_name,row.numStudents,opts]		
 		$('#courses_table').append(generate_html_tr(arr));
 		$('#courses_table button.sele:last').click(function(){
 			showReserveCourseConfirmDialog(row.id);
@@ -92,7 +92,7 @@ function renderCoursesTable2(data){
 
 	$.each(rows_data,function(i,row){
 		var tea_name=(row.teacher)?row.teacher.username:'';
-		var arr=[row.id,row.name,row.location,row.credit,tea_name,row.numStudents,opts]		
+		var arr=[row.name,row.location,row.credit,tea_name,row.numStudents,opts]		
 		$('#courses_table2').append(generate_html_tr(arr));
 		$('#courses_table2 button.unsele:last').click(function(){
 			showDropCourseConfirmDialog(row.id);
@@ -154,16 +154,16 @@ function tryDropCourse(courseId) {
 </head>
 <body>
 
-	<%@ include file="div-banner.jsp"%>
-	<div class="schapp-body">
-		<div class="schapp-navi-breadcrumb">
-			<ol class="breadcrumb">
-				<li><a href="${pageContext.request.contextPath}/home">首页</a></li>					
-				<li class="active">课程管理</li>
-			</ol>
-		</div>
-
-		<div class="panel panel-success">
+<%@ include file="div-banner.jsp"%>
+<div class="schapp-body container-fluid">
+	<div class="schapp-navi-breadcrumb">
+		<ol class="breadcrumb">
+			<li><a href="${pageContext.request.contextPath}/home">首页</a></li>					
+			<li class="active">学生选课</li>
+		</ol>
+	</div>
+	<div class="">
+		<div class="col-md-6 col-sm-12 col-xs-12"><div class="panel panel-success ">
 			<div class="panel-heading">
 				<h3 class="panel-title">可选课程</h3>				
 			</div>			
@@ -171,8 +171,7 @@ function tryDropCourse(courseId) {
 				
 				<table class="table table-condensed" id="courses_table">
 					<thead>
-						<tr>
-							<th>选择</th>
+						<tr>							
 							<th>课程名称</th>
 							<th>上课地点</th>
 							<th>学分</th>
@@ -186,8 +185,8 @@ function tryDropCourse(courseId) {
 
 
 			</div>
-		</div>
-		<div class="panel panel-warning">
+		</div></div>
+		<div class="col-md-6 col-sm-12 col-xs-12"><div class="panel panel-warning ">
 			<div class="panel-heading">
 				<h3 class="panel-title">已选课程</h3>				
 			</div>			
@@ -195,8 +194,7 @@ function tryDropCourse(courseId) {
 				
 				<table class="table table-condensed" id="courses_table2">
 					<thead>
-						<tr>
-							<th>选择</th>
+						<tr>							
 							<th>课程名称</th>
 							<th>上课地点</th>
 							<th>学分</th>
@@ -210,8 +208,9 @@ function tryDropCourse(courseId) {
 
 
 			</div>
+		</div></div>
 		</div>
-	</div>
-
+</div>
+<%@ include file="div-footer.jsp"%>
 </body>
 </html>

@@ -55,4 +55,8 @@ public class HomeController {
 	public String teacher_grade_single() {		
 		return "teacher_grade_single";
 	}
+	@RequestMapping("/student/curriculum")
+	public String student_curriculum() {		
+		return "student_curriculum";
+	}
 }

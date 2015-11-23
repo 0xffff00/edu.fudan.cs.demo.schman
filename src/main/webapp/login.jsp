@@ -2,7 +2,9 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
+<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE9" >
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta name="author" content="School of Computer Science, Fudan University" />
 <title>帐号登录</title>
 
 <link rel="stylesheet" href="${pageContext.request.contextPath}/css/modal.css">
@@ -20,17 +22,19 @@
 <script src="${pageContext.request.contextPath}/js/sha1.js"></script>
 <script src="${pageContext.request.contextPath}/js/common.js"></script>
 <style type="text/css">
-body {background: #444 url(images/low_contrast_linen.png);}
+.schapp-body1 {
+	background: transparent url(images/fudan.png) no-repeat fixed center;opacity:0.7;
+}
 
 .login-box-wid {
-	margin: 0 auto;
-	width: 400px;
+	margin: 50px auto;
+	width: 430px;
 }
 
 .login-box {
-	background: white;
+	background: transparent;
 	border-radius: 8px;
-	margin: 5px;
+	margin: 15px 5px;
 	padding: 10px 15px;
 }
 </style>
@@ -38,7 +42,7 @@ body {background: #444 url(images/low_contrast_linen.png);}
 $(document).ready(function() {	
 	$('.login-box button.btn-login').click(tryLogin);
 	$(".login-box input[name='password']").pressEnter(tryLogin);
-	$('.login-box form input[name="username"]')
+	$('.login-box input[name="username"]')
 });
 function sha1(text){
 	var shaObj = new jsSHA(text, "TEXT");
@@ -60,7 +64,7 @@ function tryLogin(){
 				if (destUrl){
 					location.href=destUrl;
 				}else{
-					location.reload();
+					location.href="${pageContext.request.contextPath}";
 				}	
 				
 			}else{
@@ -89,31 +93,41 @@ function tryLogoff(){
 </script>
 </head>
 <body>
-	<div class="container">
-		<div class="row login-box-wid">
-			<div class="login-box col-sm-12">
-				<form class="form-horizontal" role="form">
-					<div class="form-group">
-						<div class="col-sm-10">
-						<h2 class="h2">帐号登录</h2>
-						</div>
-					</div>
-					<div class="form-group">
-						<label class="col-sm-2 control-label">账号</label>
-						<p class="col-sm-10"><input name="username" type="text" class="form-control" placeholder="学号/工号"></p>
-					</div>
-					<div class="form-group">
-						<label class="col-sm-2 control-label">密码</label>
-						<p class="col-sm-10"><input name="password" type="password" class="form-control" placeholder="输入密码"></p>
-					</div>
-					<div class="form-group">
-						<p class="col-sm-offset-8 col-sm-4">
-						<button type="button" class="btn btn-primary btn-block btn-login"><i class="glyphicon glyphicon-user"></i>&nbsp;登录</button>
-						</p>						
-					</div>
-				</form>
+<%@ include file="div-banner.jsp"%>
+<div class="schapp-body container-fluid">
+	<div class="row1 login-box-wid">
+		<div class="panel panel-default col-sm-12">
+			<div class="panel-heading">
+				<h1 class="panel-title">帐号登录</h1>				
+			</div>			
+			<div class="panel-body login-box">
+			<form class="form-horizontal " role="form">
+<!-- 				<div class="form-group"> -->
+<!-- 					<div class="col-sm-10"> -->
+<!-- 					<h2 class="h2">帐号登录</h2> -->
+<!-- 					</div> -->
+<!-- 				</div> -->
+				<div class="form-group">
+					<label class="col-sm-2 control-label">账号</label>
+					<p class="col-sm-10"><input name="username" type="text" class="form-control" placeholder="学号/工号"></p>
+				</div>
+				<div class="form-group">
+					<label class="col-sm-2 control-label">密码</label>
+					<p class="col-sm-10"><input name="password" type="password" class="form-control" placeholder="输入密码"></p>
+				</div>
+				<div class="form-group">
+					<p class="col-sm-offset-8 col-sm-4">
+					<button type="button" class="btn btn-primary btn-block btn-login"><i class="glyphicon glyphicon-user"></i>&nbsp;登录</button>
+					</p>						
+				</div>
+			</form>
 			</div>
 		</div>
+		<div class="login-box col-sm-12">
+			
+		</div>
 	</div>
+</div>
+<%@ include file="div-footer.jsp"%>
 </body>
 </html>

@@ -1,0 +1,104 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 2014-11-3 14:45:56 by Hibernate Tools 3.4.0.CR1 -->
+<hibernate-mapping>
+    <class name="edu.fudan.nisl.jaq.model.Report" table="report">
+        <id name="id" type="long">
+            <column name="id" precision="10" scale="0" />
+            <generator class="assigned" />
+        </id>
+        <property name="reportName" type="string">
+            <column name="report_name" length="200" not-null="true">
+                <comment>&#177;&#168;&#177;&#237;&#195;&#251;</comment>
+            </column>
+        </property>
+        <property name="reportType" type="string">
+            <column name="report_type" length="80">
+                <comment>
+                &#177;&#168;&#177;&#237;&#192;&#224;&#208;&#205;&#163;&#186;&#196;&#234;&#177;&#168;&#161;&#162;&#212;&#194;&#177;&#168;&#161;&#162;&#191;&#236;&#177;&#168;&#181;&#200;</comment>
+            </column>
+        </property>
+        <property name="reportCategory" type="string">
+            <column name="report_category" length="200">
+                <comment>
+                &#203;&#249;&#202;&#244;&#196;&#191;&#194;&#188;&#163;&#172;&#211;&#195;&#211;&#218;&#215;&#238;&#186;&#243;&#208;&#161;&#178;&#225;&#215;&#211;&#201;&#250;&#179;&#201;&#202;&#177;&#181;&#196;&#196;&#191;&#194;&#188;&#214;&#198;&#215;&#247;</comment>
+            </column>
+        </property>
+        <property name="reportNumber" type="string">
+            <column name="report_number" length="200">
+                <comment>&#214;&#184;&#177;&#234;&#187;&#250;&#185;&#216;</comment>
+            </column>
+        </property>
+        <property name="reportOrgan" type="string">
+            <column name="report_organ" length="200">
+                <comment>&#214;&#184;&#177;&#234;&#187;&#250;&#185;&#216;</comment>
+            </column>
+        </property>
+        <property name="reportApprovalnum" type="string">
+            <column name="report_approvalnum" length="200">
+                <comment>&#197;&#250;&#215;&#188;&#206;&#196;&#186;&#197;</comment>
+            </column>
+        </property>
+        <property name="reportExpirydate" type="string">
+            <column name="report_expirydate" length="80">
+                <comment>&#211;&#208;&#208;&#167;&#198;&#218;</comment>
+            </column>
+        </property>
+        <property name="reportUnit" type="string">
+            <column name="report_unit" length="40">
+                <comment>&#177;&#237;&#205;&#183;&#181;&#165;&#206;&#187;</comment>
+            </column>
+        </property>
+        <property name="reportCreatetime" type="java.lang.Long">
+            <column name="report_createtime" precision="11" scale="0">
+                <comment>&#180;&#180;&#189;&#168;&#202;&#177;&#188;&#228;</comment>
+            </column>
+        </property>
+        <property name="reportUserid" type="java.lang.Long">
+            <column name="report_userid" precision="10" scale="0">
+                <comment>&#180;&#180;&#189;&#168;&#211;&#195;&#187;&#167;</comment>
+            </column>
+        </property>
+        <property name="reportModitime" type="java.lang.Long">
+            <column name="report_moditime" precision="11" scale="0">
+                <comment>&#180;&#180;&#189;&#168;&#202;&#177;&#188;&#228;</comment>
+            </column>
+        </property>
+        <property name="reportInfo" type="string">
+            <column name="report_info" length="1020">
+                <comment>&#198;&#228;&#203;&#251;&#208;&#197;&#207;&#162;</comment>
+            </column>
+        </property>
+        <property name="reportTail" type="string">
+            <column name="report_tail" length="1020">
+                <comment>&#215;&#212;&#182;&#168;&#210;&#229;&#177;&#237;&#206;&#178;&#196;&#218;&#200;&#221;</comment>
+            </column>
+        </property>
+        <property name="reportHead" type="string">
+            <column name="report_head" length="1020">
+                <comment>&#215;&#212;&#182;&#168;&#210;&#229;&#177;&#237;&#205;&#183;&#196;&#218;&#200;&#221;</comment>
+            </column>
+        </property>
+        <property name="reportAlias" type="string">
+            <column name="report_alias" length="50" />
+        </property>
+        <set name="relaindiToReports" table="relaindi_to_report" order-by="id" lazy="false" cascade="none">
+            <key>
+                <column name="report_id" precision="10" scale="0" not-null="true">
+                </column>
+            </key>
+            <composite-element class="edu.fudan.nisl.jaq.model.RelaindiToReportAddLabel" >
+            	<property name="parentName" column="relaindi_parent_name"></property>
+            	<many-to-one name="relativeIndicator" class="edu.fudan.nisl.jaq.model.RelativeIndicator" column="relaindi_id" lazy="false"/>
+            </composite-element>
+        </set>
+        <set name="genindiToReports" table="genindi_to_report" order-by="id" lazy="false" cascade="none" >
+            <key>
+                <column name="report_id" precision="10" scale="0" not-null="true">
+                </column>
+            </key>
+            <many-to-many class="edu.fudan.nisl.jaq.model.GeneralIndicator" column="genindi_id" lazy="false" />
+        </set>
+    </class>
+</hibernate-mapping>

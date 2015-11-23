@@ -4,7 +4,7 @@
 
 	<groupId>edu.fudan.cs.homework</groupId>
 	<artifactId>school-webapp</artifactId>
-	<version>0.2.0.0</version>
+	<version>0.3.0.v20150114</version>
 	<packaging>war</packaging>
 
 

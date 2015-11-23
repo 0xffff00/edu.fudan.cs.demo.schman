@@ -110,22 +110,17 @@ function trySaveData(){
  		}
  	});
 }
-var GP_LIST=[
-   	[90,'A',4.0],
-   	[85,'A-',3.7],
-   	[82,'B+',3.3],
-   	[78,'B',3.0],
-   	[75,'B-',2.7],
-   	[72,'C+',2.3],
-   	[68,'C',2.0],
-   	[64,'C-',1.5],
-   	[60,'D',1.0],
-   	[0,'F',0]];
-function calcGP(score){
-	var m=GP_LIST;
-	if (!score) return {};
-	for (var i=0;i<m.length;i++){
-		if (score>=m[i][0]) return {gp:m[i][2],grade:m[i][1]};
+
+var GP_LIST = [ [ 90, 'A', 4.0 ], [ 85, 'A-', 3.7 ], [ 82, 'B+', 3.3 ], [ 78, 'B', 3.0 ], [ 75, 'B-', 2.7 ], [ 72, 'C+', 2.3 ],
+		[ 68, 'C', 2.0 ], [ 64, 'C-', 1.5 ], [ 60, 'D', 1.0 ], [ 0, 'F', 0 ] ];
+function calcGP(score) {
+	var m = GP_LIST;
+	//gp=4-3*(100-score)^2/1600
+	if (!score)
+		return {};
+	for (var i = 0; i < m.length; i++) {
+		if (score >= m[i][0])
+			return {gp : m[i][2],grade : m[i][1]};
 	}
 	return {};
 }
@@ -175,5 +170,6 @@ function calcGP(score){
 		
 	</div>
 </div>
+<%@ include file="div-footer.jsp"%>
 </body>
 </html>

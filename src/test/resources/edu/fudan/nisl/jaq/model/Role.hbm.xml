@@ -1,0 +1,22 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 2014-11-3 14:45:56 by Hibernate Tools 3.4.0.CR1 -->
+<hibernate-mapping>
+    <class name="edu.fudan.nisl.jaq.model.Role" table="roles">
+        <id name="id" type="long">
+            <column name="id" precision="10" scale="0" />
+            <generator class="assigned" />
+        </id>
+        <property name="rolesName" type="string">
+            <column name="roles_name" length="80" not-null="true">
+                <comment>&#189;&#199;&#201;&#171;&#195;&#251;&#179;&#198;</comment>
+            </column>
+        </property>
+        <property name="rolesPermission" type="string">
+            <column name="roles_permission" length="1020">
+                <comment>&#189;&#199;&#201;&#171;&#200;&#168;&#207;&#222;</comment>
+            </column>
+        </property>
+    </class>
+</hibernate-mapping>

@@ -1,0 +1,53 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 2014-11-3 14:45:56 by Hibernate Tools 3.4.0.CR1 -->
+<hibernate-mapping>
+    <class name="edu.fudan.nisl.jaq.model.RelativeIndicator" table="relative_indicator">
+        <id name="id" type="long">
+            <column name="id" precision="10" scale="0" />
+            <generator class="assigned" />
+        </id>
+        <property name="relaindiName" type="string">
+            <column name="relaindi_name" length="200" not-null="true">
+                <comment>&#214;&#184;&#177;&#234;&#195;&#251;&#179;&#198;</comment>
+            </column>
+        </property>
+        <property name="relaindiAlias" type="string">
+            <column name="relaindi_alias" length="200">
+                <comment>&#214;&#184;&#177;&#234;&#177;&#240;&#195;&#251;</comment>
+            </column>
+        </property>
+        <property name="relaindiDatatype" type="java.lang.Long">
+            <column name="relaindi_datatype" length="1" scale="0">
+                <comment>&#202;&#253;&#190;&#221;&#192;&#224;&#208;&#205;&#163;&#186;&#202;&#253;&#215;&#214;&#187;&#242;&#215;&#214;&#183;&#251;&#180;&#174;</comment>
+            </column>
+        </property>
+        <property name="relaindiFormula" type="string">
+            <column name="relaindi_formula" length="1020">
+                <comment>&#188;&#198;&#203;&#227;&#185;&#171;&#202;&#189;</comment>
+            </column>
+        </property>
+        <property name="relaindiCreatetime" type="java.lang.Long">
+            <column name="relaindi_createtime" precision="11" scale="0">
+                <comment>&#180;&#180;&#189;&#168;&#202;&#177;&#188;&#228;</comment>
+            </column>
+        </property>
+        <property name="relaindiUserid" type="java.lang.Long">
+            <column name="relaindi_userid" precision="10" scale="0">
+                <comment>&#180;&#180;&#189;&#168;&#211;&#195;&#187;&#167;id</comment>
+            </column>
+        </property>
+        <property name="relaindiInfo" type="string">
+            <column name="relaindi_info" length="1020">
+                <comment>&#198;&#228;&#203;&#251;&#208;&#197;&#207;&#162;</comment>
+            </column>
+        </property>
+        <property name="relaindiUnit" type="string">
+            <column name="relaindi_unit" length="20" />
+        </property>
+        <property name="relaindiModitime" type="java.lang.Long">
+            <column name="relaindi_moditime" precision="11" scale="0" />
+        </property>
+    </class>
+</hibernate-mapping>

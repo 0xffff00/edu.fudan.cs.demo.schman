@@ -9,6 +9,8 @@ import javax.servlet.jsp.tagext.BodyTagSupport;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
+
+import edu.fudan.cs.schapp.model.UserAdaptee;
 /**
  * use example in jsp file:
  * <pre>
@@ -53,22 +55,16 @@ public class RequireTag extends BodyTagSupport {
 		if (userObj == null) {
 			return false;
 		}
-		Map user = (Map) userObj;
-		String currUserMainRole = (String) user.get("MAIN_ROLE");
-
-		List<String> currUserPerms = (List<String>) user.get("permissions");
+		UserAdaptee user = (UserAdaptee) userObj;
+		String currUserMainRole = user.getMainRoleName();		
 
 		if (roles != null) {
 			if (currUserMainRole == null)
 				return false;
-			if (!roles.equals(currUserMainRole))
+			if (!roles.contains(currUserMainRole))
 				return false;
 		}
-		if (permissions != null) {
-			if (currUserPerms == null || currUserPerms.isEmpty())
-				return false;
-			if (!currUserPerms.contains(permissions))
-				return false;
+		if (permissions != null) {			
 			// TODO implement multi-permissions attribute parsing
 		}
 

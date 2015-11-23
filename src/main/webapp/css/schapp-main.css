@@ -3,13 +3,33 @@ body {
 	
 }
 .schapp-banner{
-	margin:100px 5% 0;
+	margin:50px 5% 0;
+}
+.schapp-topbar .navbar-brand-schapp > img{
+	height: 30px;
+	margin-top:-5px;
+	display: inline;vertical-align: top;
+}
+.schapp-topbar .navbar-brand-schapp > span{
+	
 }
 .schapp-body{ 
 	margin: 0 5%;
+	min-height: 330px;
 }
-
-
+.schapp-content{
+	margin: 0 0%;
+}
+.schapp-navi-breadcrumb{
+	margin: 0 0%;
+}
+.schapp-footer{
+	padding: 40px 0;
+	margin-top: 80px;
+	color: #777;
+	text-align: center;
+	border-top: 1px solid #e5e5e5;
+}
 #tipbox0 {
 	display:none;position: fixed;
 	top: 10px;height:30px;min-width:200px;float: left;

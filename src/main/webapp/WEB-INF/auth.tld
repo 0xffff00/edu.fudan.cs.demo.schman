@@ -8,7 +8,7 @@
 	<uri>http://nisl.fudan.edu.cn/taglib/auth</uri>
 	<tag>
 		<name>require</name>
-		<tag-class>edu.fudan.nisl.jaq.auth.RequireTag</tag-class>
+		<tag-class>edu.fudan.cs.auth.RequireTag</tag-class>
 		<body-content>scriptless</body-content>
 <!-- 		<body-content>tagdependent</body-content> -->
 		<attribute>

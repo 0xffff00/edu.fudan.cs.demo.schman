@@ -64,14 +64,14 @@ class CoursesCacheDAO {
 	}
 	
 	public List<Course> findCoursesTaught(long teacherId){
-		cdp.courses.findAll{it.teacher.id==teacherId}
+		cdp.courses.findAll{it.teacher?.id==teacherId}
 	}
 	public List<CourseSelection> findCourseSelectionsByCourse(long courseId){
-		cdp.courseSelections.findAll{it.course.id==courseId}
+		cdp.courseSelections.findAll{it.course?.id==courseId}
 		
 	}
 	public List<CourseSelection> findCourseSelectionsByStudent(long studentId){
-		cdp.courseSelections.findAll{it.student.id==studentId}
+		cdp.courseSelections.findAll{it.student?.id==studentId}
 		
 	}
 	public void createCourseSelection(long userId,long courseId){

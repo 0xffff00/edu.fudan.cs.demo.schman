@@ -31,7 +31,7 @@
 <script type="text/javascript">
 var rows_data,row;
 $(document).ready(function() {
-	$("#banner-nav li.manage_teachers").addClass('active');
+	$("#banner-nav li.manage_users").addClass('active');
 	$("#btn_user_add").click(function(){
 		showEditModal(0);
 	});
@@ -115,7 +115,7 @@ function trySaveUser(){
 	var new_psd = $("#user_edit_modal input[name='new_psd']").val();
 	var new_psd2 = $("#user_edit_modal input[name='new_psd2']").val();
 	if (new_psd2 != new_psd) {
-		alert("两次密码输入不一致！");
+		bootbox.alert("两次密码输入不一致！");
 		return;
 	}
 	
@@ -149,43 +149,43 @@ function trySaveUser(){
 </head>
 <body>
 
-	<%@ include file="div-banner.jsp"%>
-	<div class="schapp-body">
-		<div class="schapp-navi-breadcrumb">
-			<ol class="breadcrumb">
-				<li><a href="${pageContext.request.contextPath}/home">首页</a></li>
-				<%-- 		<li><a href="${pageContext.request.contextPath}/users">人员信息管理</a></li>		 --%>
-				<li class="active">人员管理</li>
-			</ol>
-		</div>
+<%@ include file="div-banner.jsp"%>
+<div class="schapp-body">
+	<div class="schapp-navi-breadcrumb">
+		<ol class="breadcrumb">
+			<li><a href="${pageContext.request.contextPath}/home">首页</a></li>				
+			<li><a href="#">人员管理</a></li>	
+			<li class="active">教师信息管理</li>
+		</ol>
+	</div>
 
-		<div class="panel panel-info">
-			<div class="panel-heading">
-				<h3 class="panel-title">教师信息管理</h3>				
-			</div>			
-			<div class="panel-body">
-				<div class="bottom-right">
-					<button type="button" class="btn btn-default bottom-left-btn" id="btn_user_add">
-						<i class="glyphicon glyphicon-plus"></i>&nbsp;新增教师账户
-					</button>				
-				</div>
-				<table class="table table-condensed" id="teachers_table">
-					<thead>
-						<tr>
-							<th>#</th>
-							<th>工号</th>
-							<th>姓名</th>
-							<th>所在院系</th>							
-							<th>操作</th>
-						</tr>
-					</thead>
-					 
-				</table>
-
-
+	<div class="panel panel-info">
+		<div class="panel-heading">
+			<h3 class="panel-title">教师信息管理</h3>				
+		</div>			
+		<div class="panel-body">
+			<div class="bottom-right">
+				<button type="button" class="btn btn-default bottom-left-btn" id="btn_user_add">
+					<i class="glyphicon glyphicon-plus"></i>&nbsp;新增教师账户
+				</button>				
 			</div>
+			<table class="table table-condensed" id="teachers_table">
+				<thead>
+					<tr>
+						<th>#</th>
+						<th>工号</th>
+						<th>姓名</th>
+						<th>所在院系</th>							
+						<th>操作</th>
+					</tr>
+				</thead>
+				 
+			</table>
+
+
 		</div>
 	</div>
+</div>
 
 <div id="user_edit_modal" class="modal" role="dialog">
   <div class="modal-dialog">
@@ -233,5 +233,6 @@ function trySaveUser(){
     </div><!-- /.modal-content -->
   </div><!-- /.modal-dialog -->
  </div>
+ <%@ include file="div-footer.jsp"%>
 </body>
 </html>
